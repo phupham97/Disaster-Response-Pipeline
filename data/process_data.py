@@ -24,7 +24,7 @@ def load_data(messages_filepath, categories_filepath):
 
 
 def clean_data(df):
-     '''
+    '''
     This function clean dataframe.
     Input: a dataframe.
     Output: Dataframe after cleaning.
