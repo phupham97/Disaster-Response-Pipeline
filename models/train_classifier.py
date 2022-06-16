@@ -22,7 +22,7 @@ nltk.download('stopwords')
 nltk.download('punkt')
 
 def load_data(database_filepath):
-     '''
+    '''
     This function load the data for training.
     Input: paths to SQL database.
     Output: 
@@ -65,7 +65,7 @@ def build_model():
 
 # Define function to calculate accuracy:
 def class_report(Array1, Array2, col_names):
-     '''
+    '''
     This function evaluates accuracy between 2 arrays.
     Input: 
     Array1: output array,
@@ -88,7 +88,7 @@ def class_report(Array1, Array2, col_names):
     return data_report
 
 def evaluate_model(model, X_test, Y_test, category_names):
-     '''
+    '''
     This function evaluates accuracy of the model.
     Input: 
     Model: model which trained,
