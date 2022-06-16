@@ -5,6 +5,11 @@ from sqlalchemy import create_engine
 
 
 def load_data(messages_filepath, categories_filepath):
+    '''
+    This function load the data into a dataframe.
+    Input: paths to csv file which contains data.
+    Output: Dataframe of data.
+    '''
     #Load Messages Dataset
     messages = pd.read_csv(messages_filepath)
     
@@ -19,6 +24,11 @@ def load_data(messages_filepath, categories_filepath):
 
 
 def clean_data(df):
+     '''
+    This function clean dataframe.
+    Input: a dataframe.
+    Output: Dataframe after cleaning.
+    '''
     #Create a df for category 
     categories = df['categories'].str.split(';', expand = True)
     #Select first row
