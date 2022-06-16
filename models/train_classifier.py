@@ -22,6 +22,14 @@ nltk.download('stopwords')
 nltk.download('punkt')
 
 def load_data(database_filepath):
+     '''
+    This function load the data for training.
+    Input: paths to SQL database.
+    Output: 
+    X: messages column,
+    Y: output column,
+    category_names: name for categories columns.
+    '''
     engine = create_engine('sqlite:///' + database_filepath)
     df = pd.read_sql_table('Messages', engine)
     X = df['message']
@@ -57,6 +65,15 @@ def build_model():
 
 # Define function to calculate accuracy:
 def class_report(Array1, Array2, col_names):
+     '''
+    This function evaluates accuracy between 2 arrays.
+    Input: 
+    Array1: output array,
+    Array2: prediction array,
+    col_names: categories name.
+    Output: 
+    data_report: A report evaluates precision, recall, f1 score of each categories.
+    '''
     class_report = []
     # Evaluate metrics for each set of labels
     for i in range(len(col_names)):
@@ -71,6 +88,16 @@ def class_report(Array1, Array2, col_names):
     return data_report
 
 def evaluate_model(model, X_test, Y_test, category_names):
+     '''
+    This function evaluates accuracy of the model.
+    Input: 
+    Model: model which trained,
+    X_test: test set of categories column,
+    Y_test: test set of output column,
+    category_names: categories name.
+    Output: 
+    A report evaluates accuracy of the model.
+    '''
     # Get results and add them to a dataframe.
     y_pred = model.predict(X_test)
     print(class_report(np.array(Y_test), y_pred, col_names=category_names))
